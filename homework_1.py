@@ -43,3 +43,31 @@ for word in words_4:
 	print(word)
 
 
+#Fifth exercise
+
+
+import subprocess
+
+hosts = ['google.com', 'youtube.com', 'yandex.ru']
+# args = ['ping', '-c 1', hosts]
+for host in hosts: 
+	args = ['ping', '-c 1', host]
+	subproc_ping = subprocess.Popen(args, stdout=subprocess.PIPE)
+	for line in subproc_ping.stdout:
+		print(line.decode('cp866'))
+
+
+with open('test_file.txt', 'w', encoding='cp866') as file:
+	words=['сетевое программирование', ' сокет', ' декоратор']
+	for word in words:
+		file.write(word)
+
+import sys
+print(sys.getfilesystemencoding())
+
+with open('test_file.txt', 'rb') as file:
+	print(file.read().decode('cp866'))
+
+
+
+
