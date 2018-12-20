@@ -57,12 +57,16 @@ for host in hosts:
 		print(line.decode('cp866'))
 
 
+
+#sixth exercise
+
 with open('test_file.txt', 'w', encoding='cp866') as file:
 	words=['сетевое программирование', ' сокет', ' декоратор']
 	for word in words:
 		file.write(word)
 
 import sys
+print('====================Default coding')
 print(sys.getfilesystemencoding())
 
 with open('test_file.txt', 'rb') as file:
