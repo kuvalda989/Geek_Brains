@@ -69,5 +69,12 @@ with open('test_file.txt', 'rb') as file:
 	print(file.read().decode('cp866'))
 
 
+with open('test_file.txt', 'rb') as file:
+	try:
+		print(file.read().decode('utf-8'))
+	except UnicodeDecodeError as r:
+		print(r)
+
+
 
 
