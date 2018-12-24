@@ -57,14 +57,14 @@ def write_to_csv(data):
 	return data
 
 
-# os.chdir('for_homework')
-# files = os.listdir()
-# print(files)
-# for file in files:
-# 	if file.startswith('info'):
-# 		func = get_data(file, 'cp1251')
-# 		write_to_csv(func)
-# print(func)
+os.chdir('for_homework')
+files = os.listdir()
+print(files)
+for file in files:
+	if file.startswith('info'):
+		func = get_data(file, 'cp1251')
+		write_to_csv(func)
+print(func)
 
 
 
