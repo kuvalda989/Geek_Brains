@@ -87,3 +87,28 @@ def write_order_to_json(item, quantity, price, buyer, data):
 json_func = write_order_to_json('snickers', 3, 13.22, 'unknown', 'nothing')
 json_func = write_order_to_json('mars', 5, 6777, 'Dmitry', 'at 4:44')
 
+
+
+
+# 3. Задание на закрепление знаний по модулю yaml. Написать скрипт, автоматизирующий сохранение данных в файле YAML-формата. Для этого:
+
+# Подготовить данные для записи в виде словаря, в котором первому ключу соответствует список, второму — целое число, третьему — вложенный словарь, где значение каждого ключа — это целое число с юникод-символом, отсутствующим в кодировке ASCII (например, €);
+# Реализовать сохранение данных в файл формата YAML — например, в файл file.yaml. При этом обеспечить стилизацию файла с помощью параметра default_flow_style, а также установить возможность работы с юникодом: allow_unicode = True;
+# Реализовать считывание данных из созданного файла и проверить, совпадают ли они с исходными.
+
+
+
+import yaml
+
+def write_order_to_yaml(list, int, dict):
+	with open('order_yaml.yml', 'a') as y_f:
+		yaml.dump(list, y_f, default_flow_style=False)
+		yaml.dump(int, y_f, default_flow_style=False)
+		yaml.dump(dict, y_f, allow_unicode = True,default_flow_style=False)
+
+
+data_list = ['test', 1233, 'third item']
+data_int = 10
+data_dict = {'€':100, 'Ⓟ':'unknown simbol', '☊':'something'}
+
+yaml_func = write_order_to_yaml(data_list, data_int, data_dict)
