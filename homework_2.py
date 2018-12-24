@@ -57,14 +57,33 @@ def write_to_csv(data):
 	return data
 
 
-os.chdir('for_homework')
-files = os.listdir()
-print(files)
-for file in files:
-	if file.startswith('info'):
-		func = get_data(file, 'cp1251')
-		write_to_csv(func)
-print(func)
+# os.chdir('for_homework')
+# files = os.listdir()
+# print(files)
+# for file in files:
+# 	if file.startswith('info'):
+# 		func = get_data(file, 'cp1251')
+# 		write_to_csv(func)
+# print(func)
 
 
+
+# 2. Задание на закрепление знаний по модулю json. Есть файл orders в формате JSON с информацией о заказах. Написать скрипт, автоматизирующий его заполнение данными. Для этого:
+
+# Создать функцию write_order_to_json(), в которую передается 5 параметров — товар (item), количество (quantity), цена (price), покупатель (buyer), дата (date). Функция должна предусматривать запись данных в виде словаря в файл orders.json. При записи данных указать величину отступа в 4 пробельных символа;
+# Проверить работу программы через вызов функции write_order_to_json() с передачей в нее значений каждого параметра.
+
+
+
+
+import json
+
+def write_order_to_json(item, quantity, price, buyer, data):
+	data_dict = {'item':item, 'quantity': quantity, 'price': price, 'buyer': buyer, 'data': data}
+	with open('orders.json', 'a') as j_f:
+		json.dump(data_dict, j_f, sort_keys=True,indent='    ')
+
+
+json_func = write_order_to_json('snickers', 3, 13.22, 'unknown', 'nothing')
+json_func = write_order_to_json('mars', 5, 6777, 'Dmitry', 'at 4:44')
 
