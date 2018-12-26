@@ -2,6 +2,15 @@ from socket import *
 import time
 import pickle
 import json
+import argparse
+import sys
+
+
+def createParser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-a', default='')
+    parser.add_argument('-p', default=7777)
+    return parser
 
 
 def server_start(host, port):
@@ -39,9 +48,13 @@ response_200 = {
 
 
 if '__main__' == __name__:
-    while True:
-        con = server_start('localhost', 8888)
-        inf = take_information_from_client(con['conn'], con['addr'])
-        response_status(con['conn'], response_200)
-        print(inf)
-        close_server(con['conn'])
+	parser = createParser()
+	namespace = parser.parse_args(sys.argv[1:])
+	addr = namespace.a
+	port = int(namespace.p)
+	while True:
+		con = server_start(addr, port)
+		inf = take_information_from_client(con['conn'], con['addr'])
+		response_status(con['conn'], response_200)
+		print(inf)
+		close_server(con['conn'])

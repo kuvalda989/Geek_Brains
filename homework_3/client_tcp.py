@@ -1,10 +1,12 @@
+#!/usr/bin/python3.6
+
 from socket import *
 import time
 import json
 import pickle
+import sys
 
-
-def connect_to_server(addr, port):
+def connect_to_server(addr, port=7777):
     # create connnection and return it
     s = socket(AF_INET, SOCK_STREAM)
     s.connect((addr, port))
@@ -39,8 +41,12 @@ presense = {
 }
 
 
+
+
 if '__main__' == __name__:
-    connection = connect_to_server('localhost', 8888)
-    ask_stat = ask_for_status(connection)
-    status = take_status_from_server(connection)
-    print(status)
+	addr = sys.argv[1]
+	port = int(sys.argv[2])
+	connection = connect_to_server(addr, port)
+	ask_stat = ask_for_status(connection)
+	status = take_status_from_server(connection)
+	print(status)
